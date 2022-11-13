@@ -21,7 +21,7 @@ export class AuthService {
         };
         try {
           const response = await axios({
-            method: 'POST',
+            method: 'post',
             url: kakaoTokenUrl,
             timeout: 30000,
             headers,

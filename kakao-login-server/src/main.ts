@@ -3,7 +3,6 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  const cors = require('cors');
   const allowlist = ['http://127.0.0.1:3000'];
   app.enableCors({
     origin: function (origin, callback) {
