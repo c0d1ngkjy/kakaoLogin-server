@@ -3,7 +3,7 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  const allowlist = ['http://127.0.0.1:3000'];
+  const allowlist = ['http://127.0.0.1:3000', 'http://localhost:3000'];
   app.enableCors({
     origin: function (origin, callback) {
       if(!origin || allowlist.indexOf(origin) !== -1) {

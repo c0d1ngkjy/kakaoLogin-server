@@ -3,9 +3,8 @@ import { AuthService } from './auth.service';
 
 @Controller('auth')
 export class AuthController {
-    constructor(
-        private authService: AuthService
-    ){}
+    constructor(private authService: AuthService){}
+
     @Post('/login')
     async login(@Body() body: any, @Response() res): Promise<any> {
         try {
@@ -17,11 +16,13 @@ export class AuthController {
 
         console.log(`kakaoUserInfo : ${JSON.stringify(kakao)}`);
         if (!kakao.id) {
-            throw new BadRequestException('카카오 정보가 없습니다.');
+            throw new BadRequestException('카카오 로그인 실패!');
         }
-
+        
+        const jwt = await this.authService.login(kakao);
+        console.log(`jwt.accessToken : ${jwt.accessToken}`);
         res.send({
-            user: kakao,
+            accessToken: jwt.accessToken,
             message: 'success',
         });
         } catch (e) {
