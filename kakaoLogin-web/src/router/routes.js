@@ -4,8 +4,9 @@ const routes = [
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: 'index', component: () => import('pages/IndexPage.vue') },
+      { path: '', component: () => import('pages/LoginPage.vue') },
       { path: 'kakao-callback', component: () => import('pages/KakaoCallback.vue') },
+      { path: 'index', component: () => import('pages/Index.vue') },
     ]
   },
 
